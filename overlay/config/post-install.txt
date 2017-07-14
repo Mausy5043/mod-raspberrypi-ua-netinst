@@ -39,7 +39,7 @@ echo "ff02::1         ip6-allnodes"     >> /rootfs/etc/hosts
 echo "ff02::2         ip6-allrouters"   >> /rootfs/etc/hosts
 
 echo "Creating extra mountpoints..."
-mkdir -p /rootfs/mnt/share1
+# mkdir -p /rootfs/mnt/share1
 mkdir -p /rootfs/mnt/backup
 mkdir -p /rootfs/home/pi/bin
 
