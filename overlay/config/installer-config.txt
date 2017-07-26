@@ -46,8 +46,6 @@ user_is_admin=1
 
 hostname=raspberrypi
 # This is a placeholder name. It will be replaced by the mod-raspberrypi-ua-netinst script.
-domainname=lan
-# this is my default local domainname
 
 
 # >>> Localisation <<<
