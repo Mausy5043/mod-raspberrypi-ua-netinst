@@ -95,9 +95,3 @@ chroot /rootfs /usr/sbin/update-rc.d switch_cpu_governor defaults
 echo -n "********** SYSTEM READY **********"
 
 date
-# put the logfile somewhere we can find it, so we can mount /var/log with tmpfs
-sync; sync
-LOGTARGET=$USRHOME/installer.log
-cp $LOGFILE /rootfs/$LOGTARGET
-chmod 0644  /rootfs/$LOGTARGET
-chroot /rootfs /bin/chown $USER:$USER /$LOGTARGET
