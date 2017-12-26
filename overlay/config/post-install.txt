@@ -53,7 +53,8 @@ echo "boson:/srv/array1/backup    /mnt/backup nfs4 nouser,atime,rw,dev,exec,suid
 echo "boson:/srv/array1/rbin/rpi  /home/pi/bin nfs4 nouser,atime,rw,dev,exec,suid,intr,_netdev,x-systemd.automount,noauto  0   0" >> /rootfs/etc/fstab
 
 echo "."
-
+chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
+chroot /rootfs /usr/sbin/update-locale LANGUANGE="en_US:en"
 
 ####################
 #### USER SETUP ####
