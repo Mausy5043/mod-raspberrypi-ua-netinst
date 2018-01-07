@@ -25,7 +25,7 @@ RMTPATH=$hostname/$USRHOME
 # Here we regenerate all the host SSH keys
 rm /rootfs/etc/ssh/ssh_host_*
 chroot /rootfs /usr/bin/ssh-keygen -N "" -t rsa   -b 4096 -f /etc/ssh/ssh_host_rsa_key
-chroot /rootfs /usr/bin/ssh-keygen -N "" -t dsa   -b 1024 -f /etc/ssh/ssh_host_dsa_key
+#chroot /rootfs /usr/bin/ssh-keygen -N "" -t dsa   -b 1024 -f /etc/ssh/ssh_host_dsa_key
 chroot /rootfs /usr/bin/ssh-keygen -N "" -t ecdsa -b 521  -f /etc/ssh/ssh_host_ecdsa_key
 chroot /rootfs /usr/bin/ssh-keygen -N "" -t ed25519       -f /etc/ssh/ssh_host_ed25519_key
 
@@ -53,7 +53,8 @@ echo "boson:/srv/array1/backup    /mnt/backup nfs4 nouser,atime,rw,dev,exec,suid
 echo "boson:/srv/array1/rbin/rpi  /home/pi/bin nfs4 nouser,atime,rw,dev,exec,suid,intr,_netdev,x-systemd.automount,noauto  0   0" >> /rootfs/etc/fstab
 
 echo "."
-
+chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
+chroot /rootfs /usr/sbin/update-locale LANGUANGE="en_US:en"
 
 ####################
 #### USER SETUP ####
@@ -95,9 +96,3 @@ chroot /rootfs /usr/sbin/update-rc.d switch_cpu_governor defaults
 echo -n "********** SYSTEM READY **********"
 
 date
-# put the logfile somewhere we can find it, so we can mount /var/log with tmpfs
-sync; sync
-LOGTARGET=$USRHOME/installer.log
-cp $LOGFILE /rootfs/$LOGTARGET
-chmod 0644  /rootfs/$LOGTARGET
-chroot /rootfs /bin/chown $USER:$USER /$LOGTARGET
