@@ -17,4 +17,3 @@
 root:root  744  /etc/cron.d/raspboot
 root:root  755  /etc/init.d/switch_cpu_governor
 root:root  744  /etc/logrotate.d/raspmod
-root:root  644  /etc/rsyslog.d/raspmod.conf
