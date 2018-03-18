@@ -39,17 +39,17 @@ BRANCH=$(cat $BRANCH)
 echo ""
 echo ""
 echo ""
-echo "Settings being used:"
-echo "Wi-fi=$WIFI"
-echo "Name=$CLIENT"
-echo "Branch=$BRANCH"
+echo "Settings being used:" | tee | logger -t mod-raspberry
+echo "Wi-fi=$WIFI" | tee | logger -t mod-raspberry
+echo "Name=$CLIENT" | tee | logger -t mod-raspberry
+echo "Branch=$BRANCH" | tee | logger -t mod-raspberry
 echo ""
 
 echo ""
 echo ""
 echo ""
 echo "**************************************************"
-echo "*** Updating the RASPBERRYPI-UA-NETINST files ****"
+echo "*** Updating the RASPBERRYPI-UA-NETINST files ****" | tee | logger -t mod-raspberry
 echo "**************************************************"
 echo ""
 pushd $NETINST/
@@ -64,7 +64,7 @@ echo ""
 echo ""
 echo ""
 echo "**************************************************"
-echo "*** Putting modifications in place ***************"
+echo "*** Putting modifications in place ***************" | tee | logger -t mod-raspberry
 echo "**************************************************"
 echo ""
 cp -rv ./overlay/* $NETINST/
@@ -85,7 +85,7 @@ echo ""
 echo ""
 echo ""
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-echo "@@@ Building RASPBERRYPI-UA-NETINST image @@@@@@@@"
+echo "@@@ Building RASPBERRYPI-UA-NETINST image @@@@@@@@" | tee | logger -t mod-raspberry
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 echo ""
 pushd $NETINST/
@@ -95,7 +95,7 @@ pushd $NETINST/
   echo ""
   echo ""
   echo "**************************************************"
-  echo "*** Cleaning the installer ***********************"
+  echo "*** Cleaning the installer ***********************" | tee | logger -t mod-raspberry
   echo "**************************************************"
   echo ""
   ./clean.sh || exit 1
@@ -104,7 +104,7 @@ pushd $NETINST/
   echo ""
   echo ""
   echo "**************************************************"
-  echo "*** Updating the installer packages **************"
+  echo "*** Updating the installer packages **************" | tee | logger -t mod-raspberry
   echo "**************************************************"
   echo ""
   ./update.sh || exit 1
@@ -113,7 +113,7 @@ pushd $NETINST/
   echo ""
   echo ""
   echo "**************************************************"
-  echo "*** Building the installer ***********************"
+  echo "*** Building the installer ***********************" | tee | logger -t mod-raspberry
   echo "**************************************************"
   echo ""
   # We don't need the zip file
