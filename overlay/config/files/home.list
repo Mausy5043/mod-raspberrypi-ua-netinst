@@ -16,6 +16,5 @@
 # pi:pi  755  /home/pi/.bashrc
 pi:pi  644  /home/pi/.bashrc
 pi:pi  755  /home/pi/.dircolors
-pi:pi  755  /home/pi/.lftprc
 pi:pi  644  /home/pi/.profile
 pi:pi  755  /home/pi/.screenrc
