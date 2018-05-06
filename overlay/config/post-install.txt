@@ -57,6 +57,12 @@ chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
 chroot /rootfs /usr/sbin/update-locale LANGUANGE="en_US:en"
 
 echo
+eval chroot /rootfs /usr/bin/apt-get -y update 2>&1 | output_filter
+if [ "${PIPESTATUS[0]}" -eq 0 ]; then
+	echo "OK"
+else
+	echo "FAILED !"
+fi
 echo "Removing rsyslog..."
 eval chroot /rootfs /usr/bin/apt-get -y purge rsyslog 2>&1 | output_filter
 if [ "${PIPESTATUS[0]}" -eq 0 ]; then
